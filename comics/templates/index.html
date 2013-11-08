@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block top %}
+<h3>Latest Comics</h3>
+
+{% if latest_comics %}
+{% for item in latest_comics %}
+
+<a href="{% url comics.views.comics_detail item|slugify %}">{{ item }}</a>
+
+{% if item.pic1 %}
+<a href="{{ item.pic1.url }}"><img src="{{ item.pic1|thumbnail }}"alt="pic" /></a>
+{% endif %}
+
+{% endfor %}
+{% endif %}
+<hr>
+{% endblock top %}
+
+
+{% block left %}
+<h3>Featured Artists</h3>
+{% for item in random_artists %}
+<p><a href="{% url comics.views.artist_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+{% endblock left %}
+
+{% block right %}
+<h3>Featured Publishers</h3>
+{% for item in random_publishers %}
+<p><a href="{% url comics.views.publisher_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+{% endblock right %}
+
+
+{% block center %}
+<h3>Featured Articles</h3>
+{% for item in random_articles %}
+<p><a href="{% url comics.views.article_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+{% endblock center %}

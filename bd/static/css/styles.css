@@ -1,0 +1,58 @@
+/* Site Styles */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.50);
+    padding: 50px;
+    margin: 0 0 30px;
+
+}
+
+.container {
+
+    width:100%;
+}
+
+
+
+.leftcol {
+    float:left;
+    width:450px;
+}
+
+.centercol {
+    margin:0 auto;
+    width:200px;
+
+}
+
+.rightcol {
+    float:right;
+    width:300px;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+}
+
+h1 {
+    line-height: 56px;
+    font-weight: bold;
+}
+
+h2, h3 {
+    font-weight: bold;
+    color: #996600;
+}
+
+

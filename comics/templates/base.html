@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<title>Bande Dessinée</title>
+<link rel="stylesheet" href="{{STATIC_URL}}css/styles.css" />
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Bande Dessinée</h1>
+
+{% block menu %}
+<a href="{% url comics.views.index %}">bédé</a>
+<a href="{% url comics.views.show_news %}">News</a>
+<a href="">Comics</a>
+<a href="">Articles</a>
+<a href="">Artists</a>
+<a href="">Users</a>
+{% endblock menu %}
+<a href="">Contact</a>
+
+<br />
+
+{% block top %}{% endblock top %}
+
+<div class="leftcol">
+{% block left %}{% endblock left %}
+</div>
+
+
+<div class="rightcol">
+{% block right %}{% endblock right %}
+</div>
+
+
+<div class="centercol">
+{% block center %}{% endblock center %}
+</div>
+
+<br />
+
+<div style="clear:both;"></div>
+</div>
+
+<footer><center>Onur Ates - Bande Dessinée</center></footer>
+
+</body>
+</html>

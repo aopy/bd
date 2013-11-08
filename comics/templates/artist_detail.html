@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% block left %}
+
+
+<h2>{{ artist_name }}</h2>
+
+{% if artist_photo %}
+<a href="{{ artist_photo.url }}">
+<img src="{{ artist_photo|thumbnail }}" alt="pic"/>
+</a> 
+{% endif %}
+
+<p><strong>Profession: </strong>{{ artist_profession }}</p>
+<p><strong>Bio: </strong>{{ artist_bio }}</p>
+<p><strong>Website: </strong>{{ artist_website }}</p>
+
+<br />
+
+{% endblock left %}
+
+{% block right %}
+
+{% for item in artist_works %}
+
+<p><a href="{% url comics.views.comics_detail item|slugify %}">{{ item }}</a></p>
+
+{% if item.pic1 %}
+<a href="{{ item.pic1.url }}"><img src="{{ item.pic1|thumbnail }}"alt="pic" /></a>
+
+{% endif %}
+{% endfor %}
+
+{% endblock right %}

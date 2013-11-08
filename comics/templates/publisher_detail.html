@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% block left %}
+
+
+<h2>{{ publisher_name }}</h2>
+
+{% if publisher_logo %}
+<a href="{{ publisher_logo.url }}">
+<img src="{{ publisher_logo|thumbnail }}" alt="logo"/>
+</a> 
+{% endif %}
+
+<p><strong>Info: </strong>{{ publisher_info }}</p>
+
+{% if publisher_website %}
+<p><a href="{{ publisher_website }}">Website</a></p>
+{% endif %}
+
+<br />
+
+{% endblock left %}
+
+{% block right %}
+
+{% for item in publisher_comics %}
+
+<p><a href="{% url comics.views.comics_detail item|slugify %}">{{ item }}</a></p>
+
+{% if item.pic1 %}
+<a href="{{ item.pic1.url }}"><img src="{{ item.pic1|thumbnail }}"alt="pic" /></a>
+
+{% endif %}
+{% endfor %}
+
+{% endblock right %}

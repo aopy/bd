@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% block left %}
+
+
+<h2>{{ article_title }}</h2>
+
+<p>{{ article_kind }}</p>
+
+<p>{{ article_text }}</p>
+
+
+{% for item in article_writer %}
+<p><a href="{% url comics.views.artist_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+{% for item in article_pic %}
+{% if item %}
+<a href="{{ item.url }}">
+    <img src="{{ item|thumbnail }}" alt="pic" />
+</a> 
+{% endif %}
+{% endfor %}
+
+<p><strong>Source: </strong>{{ article_source }}</p>
+
+<br />
+
+{% endblock left %}

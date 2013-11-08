@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% block left %}
+
+<h2>{{ comics_name }}</h2>
+
+<strong>Genre: </strong>
+{% for item in comics_genre %}
+{{ item }}
+{% endfor %}
+
+
+<p>{{ comics_info }}</p>
+
+writer:
+{% for item in comics_writer %}
+<p><a href="{% url comics.views.artist_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+
+artist:
+{% for item in comics_artist %}
+<p><a href="{% url comics.views.artist_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+
+<p>letterer</p>
+{% for item in comics_letterer %}
+<p><a href="{% url comics.views.artist_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+
+
+{% for item in comics_colorist %}
+<p><a href="{% url comics.views.artist_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+
+{% if comics_inker %}
+{% for item in comics_inker %}
+<p><a href="{% url comics.views.artist_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+{% endif %}
+
+{% if comics_penciller %}
+{% for item in comics_penciller %}
+<p><a href="{% url comics.views.artist_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+{% endif %}
+
+{% if comics_editor %}
+{% for item in comics_editor %}
+<p><a href="{% url comics.views.artist_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+{% endif %}
+
+<p><strong>Publication date: </strong>{{ comics_pub_date }}</p>
+
+{% if comics_publisher %}
+<p><a href="{% url comics.views.publisher_detail comics_publisher|slugify %}">{{ comics_publisher }}</a></p>
+{% endif %}
+
+<p>articles:</p>
+{% for item in comics_article %}
+<p><a href="{% url comics.views.article_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+
+{% for item in comics_pic %}
+{% if item %}
+<a href="{{ item.url }}">
+    <img src="{{ item|thumbnail }}" alt="pic" />
+</a> 
+{% endif %}
+{% endfor %}
+
+<p><strong>Link: </strong>{{ comics_link }}</p>
+
+<br />
+
+{% endblock left %}

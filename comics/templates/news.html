@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block top %}
+<h3>Latest News</h3>
+
+{% if latest_news %}
+
+<p><a href="{% url comics.views.article_detail latest_news|slugify %}">{{ latest_news }}</a></p>
+
+{% if latest_news.pic1 %}
+<p><a href="{{ latest_news.pic1.url }}"><img src="{{ latest_news.pic1|thumbnail }}"alt="pic" /></a></p>
+{% endif %}
+
+<p>{{ latest_news.text|truncatewords:50 }}</p>
+
+{% endif %}
+
+<hr>
+<p>test</p>
+{% if test %}
+{% for item in test %}
+<p><a href="{% url Comics.views.comics_detail item|slugify %}">{{ item.name }}</a></p>
+{% endfor %}
+{% endif %}
+{% if not test %}
+<p>broken</p>
+{% endif %}
+{% endblock top %}
+
+
+{% block left %}
+
+<h3>Featured News</h3>
+{% for item in news_all %}
+<p><a href="{% url comics.views.article_detail item|slugify %}">{{ item }}</a></p>
+{% endfor %}
+
+{% endblock left %}
+
+
